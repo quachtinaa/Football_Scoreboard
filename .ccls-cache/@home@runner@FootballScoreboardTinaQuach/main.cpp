@@ -10,7 +10,7 @@ using namespace std;
         bool home_status;
         int score, timeout_count;
       public:
-        Team(){name = "Default"; coach_name = "Default"; home_city = "Default", home_status = true, score = 0, timeout_count = 0;} // default constructor
+        Team(){name = "DefaultTeamName"; coach_name = "DefaultCoach"; home_city = "DefaultHomeCity", home_status = true, score = 0, timeout_count = 0;} // default constructor
         void setName(string n){name = n;}
         void setCoachName(string cn){coach_name = cn;}
         void setHomeCity(string hc){home_city = hc;}
@@ -30,6 +30,7 @@ using namespace std;
       private:
         int minute, seconds, quarter, down, toGo;
         Team home, visitors;
+        string color, reset = "\x1b[0m";
       public:
         Scoreboard(){minute = 0, seconds = 0, quarter = 0, down = 0, toGo = 0, home = Team(), visitors = Team();} // default constructor
         void setMinute(int min){minute = min;}
@@ -48,11 +49,19 @@ using namespace std;
         Team getVisitors() const {return visitors;}
         void showScoreboard()
         {
+          color = "\x1b[" + to_string(32) + ";"+to_string(33)+"m";
+          cout << color << "\t\t\t  | " << reset << "FOOTBALL SCOREBOARD " << color << "|" << endl;
+          cout << "---------------------------------------------------" << reset << endl;
+          cout << home.getHomeCity() << "\t\t\t\t\t " << visitors.getHomeCity() << endl;
           cout << home.getName() << "\t\t  " << minute << ":" << seconds << "\t\t " << visitors.getName() << endl;
-          cout << "\t" << home.getScore() << "\t\t" << "QTR: " << quarter << "\t\t\t" << visitors.getScore() << endl;
-          cout << down << " DOWN" << "\t\t\t\t\t" << "TO GO " << toGo << endl;
-          cout << "TIMEOUTS LEFT: " << home.getTimeoutCount() << "\t" << "TIMEOUTS LEFT: " << visitors.getTimeoutCount() << endl;
-          cout << "Coaches: " << home.getCoachName() << "\t\t" << visitors.getCoachName() << endl;
+          cout << "\t\t" << home.getScore() << "\t\t     QTR: " << quarter << "\t\t\t    " << visitors.getScore() << endl;
+          cout << "\t\t"<< down << " DOWN" << "\t\t\t\t\t" << "  TO GO " << toGo << endl;
+          cout << "TIMEOUTS LEFT: " << home.getTimeoutCount() << "\t\t\t\t " << "TIMEOUTS LEFT: " << visitors.getTimeoutCount() << endl;
+          cout << "Coaches: " << home.getCoachName() << "\t\t\t " << visitors.getCoachName() << endl;
+          cout << color << "---------------------------------------------------" << endl;
+          cout << "              ||                   ||              " << reset << endl;
+          color = "\x1b[" + to_string(32) + ";"+to_string(32)+"m";
+          cout << color << "- - - - - - - - - - - - - - - - - - - - - - - - - -" << reset << endl;
         }
     };
 
@@ -68,19 +77,23 @@ int main()
     {
       s.showScoreboard();
 
-      cout << "\n \t\t\tMENU" << endl;
-      cout << "---------------------------------" << endl;
+      cout << "-----------------------------------------------------------------------" << endl;
+      cout << "\n \t\t\t\t\t\t\t\t\tMENU" << endl;
+      cout << "-----------------------------------------------------------------------" << endl;
+      cout << "Note: Team One is Home and Team Two is Visitor unless changed otherwise" << endl;
+      cout << "-----------------------------------------------------------------------" << endl;
       cout << "A. Update Home and Visitor Teams" << endl;
-      cout << "B. Update Team One's Name" << endl;
-      cout << "C. Update Team Two's Name" << endl;
-      cout << "D. Update Team One's Coach Name" << endl;
-      cout << "E. Update Team Two's Coach Name" << endl;
-      cout << "F. Update Team One's Home City" << endl;
-      cout << "G. Update Team Two's Home City" << endl;
-      cout << "H. Update Team One's Score" << endl;
-      cout << "I. Update Team Two's Score" << endl;
-      cout << "J. Update Team One's Timeout Count";
-      cout << "Enter your choice: ";
+      cout << "B. Update Team Names" << endl;
+      cout << "C. Update Team Coach Names" << endl;
+      cout << "D. Update Home City Names" << endl;
+      cout << "E. Update Scores" << endl;
+      cout << "J. Update Timeout Counts" << endl;
+      cout << "F. Update Quarter" << endl;
+      cout << "G. Update Down" << endl;
+      cout << "H. Update To Go" << endl;
+      cout << "I. Update Time" << endl;
+      cout << "\nEnter your choice: ";
+      cin >> choice;
     
     } while (choice == 'X' || choice == 'x');
 
