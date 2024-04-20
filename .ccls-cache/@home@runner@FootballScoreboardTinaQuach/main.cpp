@@ -3,8 +3,6 @@
 
 using namespace std;
 
-int main() 
-{
   class Team
     {
       private:
@@ -12,7 +10,7 @@ int main()
         bool home_status;
         int score, timeout_count;
       public:
-        Team(){name = "Default"; coach_name = "Default"; home_city = "Default"; home_status = true;} // default constructor
+        Team(){name = "Default"; coach_name = "Default"; home_city = "Default", home_status = true, score = 0, timeout_count = 0;} // default constructor
         void setName(string n){name = n;}
         void setCoachName(string cn){coach_name = cn;}
         void setHomeCity(string hc){home_city = hc;}
@@ -50,7 +48,17 @@ int main()
         Team getVisitors() const {return visitors;}
         void showScoreboard()
         {
-          
+          cout << home.getName() << "\t\t" << minute << ":" << seconds << "\t\t" << visitors.getName() << endl;
+          cout << "\t" << home.getScore() << "\t\t" << "QTR: " << quarter << "\t\t" << visitors.getScore() << endl;
+          cout << down << " DOWN" << "\t\t\t\t" << "TO GO " << toGo << endl;
         }
     };
+
+int main()
+{
+  Scoreboard s;
+
+  s.showScoreboard();
+
+  return 0;
 }
