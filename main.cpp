@@ -48,17 +48,41 @@ using namespace std;
         Team getVisitors() const {return visitors;}
         void showScoreboard()
         {
-          cout << home.getName() << "\t\t" << minute << ":" << seconds << "\t\t" << visitors.getName() << endl;
-          cout << "\t" << home.getScore() << "\t\t" << "QTR: " << quarter << "\t\t" << visitors.getScore() << endl;
-          cout << down << " DOWN" << "\t\t\t\t" << "TO GO " << toGo << endl;
+          cout << home.getName() << "\t\t  " << minute << ":" << seconds << "\t\t " << visitors.getName() << endl;
+          cout << "\t" << home.getScore() << "\t\t" << "QTR: " << quarter << "\t\t\t" << visitors.getScore() << endl;
+          cout << down << " DOWN" << "\t\t\t\t\t" << "TO GO " << toGo << endl;
+          cout << "TIMEOUTS LEFT: " << home.getTimeoutCount() << "\t" << "TIMEOUTS LEFT: " << visitors.getTimeoutCount() << endl;
+          cout << "Coaches: " << home.getCoachName() << "\t\t" << visitors.getCoachName() << endl;
         }
     };
 
 int main()
 {
+  // variables
   Scoreboard s;
+  Team tOne, tTwo;
+  char choice = '\0';
 
-  s.showScoreboard();
+  // do while loop for menu
+  do
+    {
+      s.showScoreboard();
+
+      cout << "\n \t\t\tMENU" << endl;
+      cout << "---------------------------------" << endl;
+      cout << "A. Update Home and Visitor Teams" << endl;
+      cout << "B. Update Team One's Name" << endl;
+      cout << "C. Update Team Two's Name" << endl;
+      cout << "D. Update Team One's Coach Name" << endl;
+      cout << "E. Update Team Two's Coach Name" << endl;
+      cout << "F. Update Team One's Home City" << endl;
+      cout << "G. Update Team Two's Home City" << endl;
+      cout << "H. Update Team One's Score" << endl;
+      cout << "I. Update Team Two's Score" << endl;
+      cout << "J. Update Team One's Timeout Count";
+      cout << "Enter your choice: ";
+    
+    } while (choice == 'X' || choice == 'x');
 
   return 0;
 }
