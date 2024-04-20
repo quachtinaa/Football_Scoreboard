@@ -13,6 +13,7 @@ int main()
   int localMinutes = 0, localSeconds = 0, localDown = 0, localToGo = 0, localEtc = 0, localChoice, localTeam = 0;
   string localName = "";
 
+  // intialize home and visitors to team one and team two
   s.setHome(tOne);
   s.setVisitors(tTwo);
   tOne.setHomeStatus(true);
@@ -21,7 +22,10 @@ int main()
   // do while loop for menu
   do
     {
+      // show scoreboard
       s.showScoreboard();
+
+      // show menu
       cout << "\n\n \t\t\t\t\t\t\t\t\tMENU" << endl;
       cout << "-----------------------------------------------------------------------" << endl;
       cout << "Note: Team One is Home and Team Two is Visitor unless changed otherwise" << endl;
@@ -48,6 +52,9 @@ int main()
       cout << "\nEnter your choice: ";
       cin >> choice;
 
+
+      // OPTIONS
+      // choice a - change home and visitor status
       if (choice == 'A' || choice == 'a')
       {
         cout << "\nWhich team is Home? (1 for Team One, 2 for Team Two): ";
@@ -67,7 +74,8 @@ int main()
           s.setVisitors(tOne);
         }
       }
-      
+
+      // choice b - change team names
       if (choice == 'B' || choice == 'b')
       {
         localChoice = subMenu();
@@ -87,7 +95,8 @@ int main()
         }
         
       }
-      
+
+      // choice c - change team coach names
       if (choice == 'C' || choice == 'c')
       {
         localChoice = subMenu();
@@ -106,7 +115,8 @@ int main()
           tTwo.setCoachName(localName);
         }
       }
-      
+
+      // choice d - change home city names
       if (choice == 'D' || choice == 'd')
       {
         localChoice = subMenu();
@@ -125,7 +135,8 @@ int main()
           tTwo.setHomeCity(localName);
         }
       }
-      
+
+      // choice e - change scores
       if (choice == 'E' || choice == 'e')
       {
         localChoice = subMenu();
@@ -142,7 +153,8 @@ int main()
           tTwo.setScore(localEtc);
         }
       }
-      
+
+      // choice f - change timeout counts
       if (choice == 'F' || choice == 'f')
       {
         localChoice = subMenu();
@@ -159,24 +171,28 @@ int main()
           tTwo.setTimeoutCount(localEtc);
         }
       }
-        
+
+      // choice g - change quarter
       if (choice == 'G' || choice == 'g')
       {
         cout << "\nQuarter: ";
         cin >> localEtc;
         s.setQuarter(localEtc);
       }
-        
+
+      // choice h - change down and to go counts
       if (choice == 'H' || choice == 'h')
       {
         cout << "\nDown: ";
         cin >> localDown;
         s.setDown(localDown);
+        
         cout << "\nTo Go: ";
         cin >> localToGo;
         s.setToGo(localToGo);
       }
-        
+
+      // choice i - change time
       if (choice == 'I' || choice == 'i')
       {
         cout << "\nMinutes: ";
@@ -188,21 +204,23 @@ int main()
       }
 
       // refresh the data in s for the new updates
+      // if user chose 2 when choosing team one or team two for home status, refresh data regarding that home is team two and visitor is team one
       if (localTeam == 2)
       {
-        s.setHome(tTwo); // refresh the data in s for the new updates
+        s.setHome(tTwo); 
         s.setVisitors(tOne);
       }
-      else // if localTeam is anything else, refresh the data so that home team is Team One and visitor is Team Two always
+      else // anything else = keep same
       {
-        s.setHome(tOne); // refresh the data in s for the new updates
+        s.setHome(tOne); 
         s.setVisitors(tTwo); 
       }
  
-      cout << "\033[2J\033[1;1H"; // clear screen
+      cout << "\033[2J\033[1;1H"; // clear screen when repeating do-while loop
       
     } while (choice != 'X' && choice != 'x');
 
+  // goodbye message
   cout << "You are exiting the scoreboard menu, goodbye!" << endl;
   
   return 0;
