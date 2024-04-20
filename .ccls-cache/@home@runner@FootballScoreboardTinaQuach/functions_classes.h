@@ -6,6 +6,9 @@
 
 using namespace std;
 
+// prototype
+int submenu();
+
 class Team
 {
   private:
@@ -70,6 +73,18 @@ class Scoreboard
       }
   };
 
-handleChoice
+int subMenu()
+{
+  int subChoice;
+  
+  cout << "\nPick a Team to Update" << endl;
+  cout << "---------------------------" << endl;
+  cout << "1. Team One" << endl;
+  cout << "2. Team Two" << endl;
+  cout << "Enter your team: ";
+  cin >> subChoice;
+
+  return subChoice;
+}
 
 #endif

@@ -70,82 +70,103 @@ int main()
       
       if (choice == 'B' || choice == 'b')
       {
-        cout << "\nWhich team's name would you like to change? (1 for Team One, 2 for Team Two): ";
-        cin >> localChoice;
+        localChoice = subMenu();
         if (localChoice == 1)
         {
           cout << "\nEnter the new name for Team One: ";
-          cin >> localName;
+          cin.ignore();
+          getline (cin, localName);
           tOne.setName(localName);
         }
         if (localChoice == 2)
         {
           cout << "\nEnter the new name for Team Two: ";
-          cin >> localName;
+          cin.ignore();
+          getline (cin, localName);
           tTwo.setName(localName);
         }
         
       }
+      
       if (choice == 'C' || choice == 'c')
       {
-        cout << "Which team's coach name would you like to change? (1 for Team One, 2 for Team Two): ";
-        cin >> localChoice;
+        localChoice = subMenu();
         if (localChoice == 1)
         {
           cout << "\nEnter the new coach name for Team One: ";
-          cin >> localName;
+          cin.ignore();
+          getline (cin, localName);
           tOne.setCoachName(localName);
         }
         if (localChoice == 2)
         {
           cout << "\nEnter the new coach name for Team Two: ";
-          cin >> localName;
+          cin.ignore();
+          getline (cin, localName);
           tTwo.setCoachName(localName);
         }
       }
+      
       if (choice == 'D' || choice == 'd')
       {
-        cout << "Which team's home city would you like to change? (1 for Team One, 2 for Team Two): ";
-        cin >> localChoice;
+        localChoice = subMenu();
         if (localChoice == 1)
         {
           cout << "\nEnter the home city for Team One: ";
-          cin >> localName;
+          cin.ignore();
+          getline (cin, localName);
           tOne.setHomeCity(localName);
         }
         if (localChoice == 2)
         {
           cout << "\nEnter the home city for Team Two: ";
-          cin >> localName;
+          cin.ignore();
+          getline (cin, localName);
           tTwo.setHomeCity(localName);
         }
       }
+      
       if (choice == 'E' || choice == 'e')
       {
-        cout << "\nTeam One Score: ";
-        cin >> localEtc;
-        tOne.setScore(localEtc);
-
-        cout << "\nTeam Two Score: ";
-        cin >> localEtc;
-        tTwo.setScore(localEtc);
+        localChoice = subMenu();
+        if (localChoice == 1)
+        {
+          cout << "\nTeam One Score: ";
+          cin >> localEtc;
+          tOne.setScore(localEtc);
+        }
+        if (localChoice == 2)
+        {
+          cout << "\nTeam Two Score: ";
+          cin >> localEtc;
+          tTwo.setScore(localEtc);
+        }
       }
+      
       if (choice == 'F' || choice == 'f')
       {
-        cout << "\nTeam One Timeout Count: ";
-        cin >> localEtc;
-        tOne.setTimeoutCount(localEtc);
-
-        cout << "\nTeam Two Timeout Count: ";
-        cin >> localEtc;
-        tTwo.setTimeoutCount(localEtc);
+        localChoice = subMenu();
+        if (localChoice == 1)
+        {
+          cout << "\nTeam One Timeout Count: ";
+          cin >> localEtc;
+          tOne.setTimeoutCount(localEtc);
+        }
+        if (localChoice == 2)
+        {
+          cout << "\nTeam Two Timeout Count: ";
+          cin >> localEtc;
+          tTwo.setTimeoutCount(localEtc);
+        }
       }
+        
       if (choice == 'G' || choice == 'g')
       {
         cout << "\nQuarter: ";
         cin >> localEtc;
         s.setQuarter(localEtc);
       }
+        
       if (choice == 'H' || choice == 'h')
       {
         cout << "\nDown: ";
@@ -155,6 +176,7 @@ int main()
         cin >> localToGo;
         s.setToGo(localToGo);
       }
+        
       if (choice == 'I' || choice == 'i')
       {
         cout << "\nMinutes: ";
