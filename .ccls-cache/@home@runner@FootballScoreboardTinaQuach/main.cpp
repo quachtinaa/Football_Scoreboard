@@ -52,6 +52,7 @@ using namespace std;
           color = "\x1b[" + to_string(32) + ";"+to_string(33)+"m";
           cout << color << "\t\t\t  | " << reset << "FOOTBALL SCOREBOARD " << color << "|" << endl;
           cout << "---------------------------------------------------" << reset << endl;
+          cout << "      HOME                           VISITOR        " << endl;
           cout << home.getHomeCity() << "\t\t\t\t\t " << visitors.getHomeCity() << endl;
           cout << home.getName() << "\t\t  " << minute << ":" << seconds << "\t\t " << visitors.getName() << endl;
           cout << "\t\t" << home.getScore() << "\t\t     QTR: " << quarter << "\t\t\t    " << visitors.getScore() << endl;
@@ -70,11 +71,14 @@ int main()
   // variables
   Scoreboard s;
   Team tOne, tTwo;
-  char choice = '\0';
-  int localMinutes = 0, localSeconds = 0, localDown = 0, localToGo = 0, localEtc = 0;
+  char choice = '\0', localChoice = '\0';
+  int localMinutes = 0, localSeconds = 0, localDown = 0, localToGo = 0, localEtc = 0, localTeam = 0;
+  string localName = " ";
 
   s.setHome(tOne);
   s.setVisitors(tTwo);
+  tOne.setHomeStatus(true);
+  tTwo.setHomeStatus(false);
   
   // do while loop for menu
   do
@@ -99,9 +103,39 @@ int main()
 
       if (choice == 'A' || choice == 'a')
       {
+        cout << "\nWhich team is Home? (1 for Home, 2 for Visitors): ";
+        cin >> localTeam;
+        if (localTeam == 1)
+        {
+          tOne.setHomeStatus(true);
+          tTwo.setHomeStatus(false);
+          s.setHome(tOne);
+          s.setVisitors(tTwo);
+        }
+        if (localTeam == 2)
+        {
+          tOne.setHomeStatus(false);
+          tTwo.setHomeStatus(true);
+          s.setHome(tTwo);
+          s.setVisitors(tOne);
+        }
       }
       if (choice == 'B' || choice == 'b')
       {
+        cout << "\nWhich team's name would you like to change? (1 for Team One, 2 for Team Two): ";
+        cin >> localChoice;
+        if (localChoice == '1')
+        {
+          cout << "\nEnter the new name for Team One: ";
+          cin >> localName;
+          tOne.setName(localName);
+        }
+        if (localChoice == '2')
+        {
+          cout << "\nEnter the new name for Team Two: ";
+          cin >> localName;
+          tTwo.setName(localName);
+        }
       }
       if (choice == 'C' || choice == 'c')
       {
@@ -142,6 +176,7 @@ int main()
 
       s.setHome(tOne); // refresh the data in s for the new updates
       s.setVisitors(tTwo);
+      
       cout << "\033[2J\033[1;1H"; // clear screen
     } while (choice != 'X' || choice != 'x');
 
