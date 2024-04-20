@@ -63,6 +63,7 @@ using namespace std;
           cout << "              ||                   ||              " << reset << endl;
           color = "\x1b[" + to_string(32) + ";"+to_string(32)+"m";
           cout << color << "- - - - - - - - - - - - - - - - - - - - - - - - - -" << reset << endl;
+          
         }
     };
 
@@ -71,9 +72,9 @@ int main()
   // variables
   Scoreboard s;
   Team tOne, tTwo;
-  char choice = '\0', localChoice = '\0';
-  int localMinutes = 0, localSeconds = 0, localDown = 0, localToGo = 0, localEtc = 0, localTeam = 0;
-  string localName = " ";
+  char choice = '\0';
+  int localMinutes = 0, localSeconds = 0, localDown = 0, localToGo = 0, localEtc = 0, localChoice, localTeam = 0;
+  string localName = "";
 
   s.setHome(tOne);
   s.setVisitors(tTwo);
@@ -87,6 +88,14 @@ int main()
       cout << "\n\n \t\t\t\t\t\t\t\t\tMENU" << endl;
       cout << "-----------------------------------------------------------------------" << endl;
       cout << "Note: Team One is Home and Team Two is Visitor unless changed otherwise" << endl;
+      if (tOne.getHomeStatus() == true)
+        cout << "\nCURRENT TEAM ONE STATUS: HOME" << endl;
+      else if (tOne.getHomeStatus() == false)
+        cout << "\nCURRENT TEAM ONE STATUS: VISITOR" << endl;
+      if (tTwo.getHomeStatus() == true)
+        cout << "CURRENT TEAM TWO STATUS: HOME" << endl;
+      else if (tTwo.getHomeStatus() == false)
+        cout << "CURRENT TEAM TWO STATUS: VISITOR" << endl;
       cout << "-----------------------------------------------------------------------" << endl;
       cout << "A. Update Home and Visitor Teams" << endl;
       cout << "B. Update Team Names" << endl;
@@ -98,12 +107,13 @@ int main()
       cout << "H. Update Down and To Go Count" << endl;
       cout << "I. Update Time" << endl;
       cout << "X. Exit" << endl;
+      
       cout << "\nEnter your choice: ";
       cin >> choice;
 
       if (choice == 'A' || choice == 'a')
       {
-        cout << "\nWhich team is Home? (1 for Home, 2 for Visitors): ";
+        cout << "\nWhich team is Home? (1 for Team One, 2 for Team Two): ";
         cin >> localTeam;
         if (localTeam == 1)
         {
@@ -120,22 +130,24 @@ int main()
           s.setVisitors(tOne);
         }
       }
+      
       if (choice == 'B' || choice == 'b')
       {
         cout << "\nWhich team's name would you like to change? (1 for Team One, 2 for Team Two): ";
         cin >> localChoice;
-        if (localChoice == '1')
+        if (localChoice == 1)
         {
           cout << "\nEnter the new name for Team One: ";
           cin >> localName;
           tOne.setName(localName);
         }
-        if (localChoice == '2')
+        if (localChoice == 2)
         {
           cout << "\nEnter the new name for Team Two: ";
           cin >> localName;
           tTwo.setName(localName);
         }
+        
       }
       if (choice == 'C' || choice == 'c')
       {
@@ -174,11 +186,23 @@ int main()
         s.setSeconds(localSeconds);
       }
 
-      s.setHome(tOne); // refresh the data in s for the new updates
-      s.setVisitors(tTwo);
-      
+      // refresh the data in s for the new updates
+      if (localTeam == 2)
+      {
+        s.setHome(tTwo); // refresh the data in s for the new updates
+        s.setVisitors(tOne);
+      }
+      else // if localTeam is anything else, refresh the data so that home team is Team One and visitor is Team Two always
+      {
+        s.setHome(tOne); // refresh the data in s for the new updates
+        s.setVisitors(tTwo); 
+      }
+ 
       cout << "\033[2J\033[1;1H"; // clear screen
-    } while (choice != 'X' || choice != 'x');
+      
+    } while (choice != 'X' && choice != 'x');
 
+  cout << "You are exiting the scoreboard menu, goodbye!" << endl;
+  
   return 0;
 }
