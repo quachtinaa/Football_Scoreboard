@@ -215,7 +215,7 @@ int main()
       }
 
     cout << "\033[2J\033[1;1H"; // clear screen when repeating do-while loop
-      
+
     } while (choice != 'X' && choice != 'x');
 
   // goodbye message

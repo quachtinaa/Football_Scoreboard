@@ -57,9 +57,8 @@ class Scoreboard
       Team getVisitors() const {return visitors;}
       void showScoreboard()
       {
-        // color = "\x1b[32;33m";
-        cout << "\t\t\t  | " << "FOOTBALL SCOREBOARD " << "|" << endl;
-        cout << "----------------------------------------------------" << endl; 
+        // cout << "\t\t\t  | " << "FOOTBALL SCOREBOARD " << "|" << endl;
+        // cout << "----------------------------------------------------" << endl; 
         cout << "      HOME                           VISITOR        " << endl;
         cout << setw(8 + home.getHomeCity().length()/2) << home.getHomeCity() << setw((33 - home.getHomeCity().length()/2) + visitors.getHomeCity().length()/2) << visitors.getHomeCity() << endl;
         cout << setw(8 + home.getName().length()/2) << home.getName() << setw((33 - home.getName().length()/2) + visitors.getName().length()/2) << visitors.getName() << endl;
@@ -68,10 +67,9 @@ class Scoreboard
         cout << "\t\t"<< down << " DOWN" << "\t\t\t\t\t" << "  TO GO " << toGo << endl;
         cout << "\nTIMEOUTS LEFT: " << home.getTimeoutCount() << "\t\t\t\t " << "TIMEOUTS LEFT: " << visitors.getTimeoutCount() << endl;
         cout << "COACH: " << home.getCoachName() << setw(33 - home.getCoachName().length()) << "COACH: " << visitors.getCoachName() << endl;
-        cout << "----------------------------------------------------" << endl;
+        /* cout << "----------------------------------------------------" << endl;
         cout << "              ||                   ||              " << endl;
-        // color = "\x1b[32;32m";
-        cout << "- - - - - - - - - - - - - - - - - - - - - - - - - - -" << endl;
+        cout << "- - - - - - - - - - - - - - - - - - - - - - - - - - -" << endl; */
       }
   };
 
