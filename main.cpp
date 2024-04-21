@@ -28,6 +28,7 @@ int main()
   // do while loop for menu
   do
     {
+      
       // show scoreboard
       s.showScoreboard();
 
@@ -212,8 +213,8 @@ int main()
         s.setHome(tOne); 
         s.setVisitors(tTwo); 
       }
- 
-      cout << "\033[2J\033[1;1H"; // clear screen when repeating do-while loop
+
+    cout << "\033[2J\033[1;1H"; // clear screen when repeating do-while loop
       
     } while (choice != 'X' && choice != 'x');
 
