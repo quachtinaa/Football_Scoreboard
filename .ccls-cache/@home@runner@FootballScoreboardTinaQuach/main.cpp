@@ -44,18 +44,8 @@ int main()
       else if (tTwo.getHomeStatus() == false)
         cout << "CURRENT TEAM TWO STATUS: VISITOR" << endl;
       cout << "-----------------------------------------------------------------------" << endl;
-      cout << "A. Update Home and Visitor Teams" << endl;
-      cout << "B. Update Team Names" << endl;
-      cout << "C. Update Team Coach Names" << endl;
-      cout << "D. Update Home City Names" << endl;
-      cout << "E. Update Scores" << endl;
-      cout << "F. Update Timeout Counts" << endl;
-      cout << "G. Update Quarter" << endl;
-      cout << "H. Update Down and To Go Count" << endl;
-      cout << "I. Update Time" << endl;
-      cout << "X. Exit" << endl;
-      
-      cout << "\nEnter your choice: ";
+
+      displayMenu();
       cin >> choice;
 
 
@@ -63,6 +53,7 @@ int main()
       // choice a - change home and visitor status
       if (choice == 'A' || choice == 'a')
       {
+        localTeam = 0;
         cout << "\nWhich team is Home? (1 for Team One, 2 for Team Two): ";
         cin >> localTeam;
         if (localTeam == 1)

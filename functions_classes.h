@@ -3,11 +3,13 @@
 
 #include <iostream>
 #include <string>
+#include <iomanip>
 
 using namespace std;
 
 // prototype
 int submenu();
+void displayMenu();
 
 class Team
 {
@@ -59,12 +61,13 @@ class Scoreboard
         cout << color << "\t\t\t  | " << reset << "FOOTBALL SCOREBOARD " << color << "|" << endl;
         cout << "----------------------------------------------------" << reset << endl;
         cout << "      HOME                           VISITOR        " << endl;
-        cout << home.getHomeCity() << "\t\t\t\t\t " << visitors.getHomeCity() << endl;
-        cout << home.getName() << "\t\t  " << minute << ":" << seconds << "\t\t " << visitors.getName() << endl;
+        cout << setw(8 + home.getHomeCity().length()/2) << home.getHomeCity() << setw((33 - home.getHomeCity().length()/2) + visitors.getHomeCity().length()/2) << visitors.getHomeCity() << endl;
+        cout << setw(8 + home.getName().length()/2) << home.getName() << setw((33 - home.getName().length()/2) + visitors.getName().length()/2) << visitors.getName() << endl;
+        cout << "\t\t\t\t\t   " << minute << ":" << seconds << endl;
         cout << "\t\t" << home.getScore() << "\t\t     QTR: " << quarter << "\t\t\t    " << visitors.getScore() << endl;
         cout << "\t\t"<< down << " DOWN" << "\t\t\t\t\t" << "  TO GO " << toGo << endl;
-        cout << "TIMEOUTS LEFT: " << home.getTimeoutCount() << "\t\t\t\t " << "TIMEOUTS LEFT: " << visitors.getTimeoutCount() << endl;
-        cout << "COACH: " << home.getCoachName() << "\t\t\t\t COACH: " << visitors.getCoachName() << endl;
+        cout << "\nTIMEOUTS LEFT: " << home.getTimeoutCount() << "\t\t\t\t " << "TIMEOUTS LEFT: " << visitors.getTimeoutCount() << endl;
+        cout << "COACH: " << home.getCoachName() << setw(33 - home.getCoachName().length()) << "COACH: " << visitors.getCoachName() << endl;
         cout << color << "----------------------------------------------------" << endl;
         cout << "              ||                   ||              " << reset << endl;
         color = "\x1b[" + to_string(32) + ";"+to_string(32)+"m";
@@ -85,6 +88,22 @@ int subMenu()
   cin >> subChoice;
 
   return subChoice;
+}
+
+void displayMenu()
+{
+  cout << "A. Update Home and Visitor Teams" << endl;
+  cout << "B. Update Team Names" << endl;
+  cout << "C. Update Team Coach Names" << endl;
+  cout << "D. Update Home City Names" << endl;
+  cout << "E. Update Scores" << endl;
+  cout << "F. Update Timeout Counts" << endl;
+  cout << "G. Update Quarter" << endl;
+  cout << "H. Update Down and To Go Count" << endl;
+  cout << "I. Update Time" << endl;
+  cout << "X. Exit" << endl;
+
+  cout << "\nEnter your choice: ";
 }
 
 #endif
