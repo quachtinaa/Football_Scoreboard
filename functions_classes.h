@@ -8,7 +8,7 @@
 using namespace std;
 
 // prototype
-int submenu();
+void submenu();
 void displayMenu();
 
 class Team
@@ -57,8 +57,8 @@ class Scoreboard
       Team getVisitors() const {return visitors;}
       void showScoreboard()
       {
-        // cout << "\t\t\t  | " << "FOOTBALL SCOREBOARD " << "|" << endl;
-        // cout << "----------------------------------------------------" << endl; 
+        cout << "\t\t\t  | " << "FOOTBALL SCOREBOARD " << "|" << endl;
+        cout << "====================================================" << endl;
         cout << "      HOME                           VISITOR        " << endl;
         cout << setw(8 + home.getHomeCity().length()/2) << home.getHomeCity() << setw((33 - home.getHomeCity().length()/2) + visitors.getHomeCity().length()/2) << visitors.getHomeCity() << endl;
         cout << setw(8 + home.getName().length()/2) << home.getName() << setw((33 - home.getName().length()/2) + visitors.getName().length()/2) << visitors.getName() << endl;
@@ -67,13 +67,13 @@ class Scoreboard
         cout << "\t\t"<< down << " DOWN" << "\t\t\t\t\t" << "  TO GO " << toGo << endl;
         cout << "\nTIMEOUTS LEFT: " << home.getTimeoutCount() << "\t\t\t\t " << "TIMEOUTS LEFT: " << visitors.getTimeoutCount() << endl;
         cout << "COACH: " << home.getCoachName() << setw(33 - home.getCoachName().length()) << "COACH: " << visitors.getCoachName() << endl;
-        /* cout << "----------------------------------------------------" << endl;
+        cout << "====================================================" << endl;
         cout << "              ||                   ||              " << endl;
-        cout << "- - - - - - - - - - - - - - - - - - - - - - - - - - -" << endl; */
+        cout << "- - - - - - - - - - - - - - - - - - - - - - - - - - -" << endl;
       }
   };
 
-int subMenu()
+void subMenu()
 {
   int subChoice;
   
@@ -82,9 +82,7 @@ int subMenu()
   cout << "1. Team One" << endl;
   cout << "2. Team Two" << endl;
   cout << "Enter your team: ";
-  cin >> subChoice;
 
-  return subChoice;
 }
 
 void displayMenu()

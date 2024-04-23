@@ -7,6 +7,7 @@
 #include <iostream>
 #include <string>
 #include "functions_classes.h"
+#include "input_validation.h"
 
 using namespace std;
 
@@ -28,7 +29,6 @@ int main()
   // do while loop for menu
   do
     {
-      
       // show scoreboard
       s.showScoreboard();
 
@@ -47,8 +47,7 @@ int main()
       cout << "-----------------------------------------------------------------------" << endl;
 
       displayMenu();
-      cin >> choice;
-
+      choice = validateChr(choice);
 
       // OPTIONS
       // choice a - change home and visitor status
@@ -56,7 +55,7 @@ int main()
       {
         localTeam = 0;
         cout << "\nWhich team is Home? (1 for Team One, 2 for Team Two): ";
-        cin >> localTeam;
+        localTeam = validateInt(localTeam);
         if (localTeam == 1)
         {
           tOne.setHomeStatus(true);
@@ -76,7 +75,8 @@ int main()
       // choice b - change team names
       if (choice == 'B' || choice == 'b')
       {
-        localChoice = subMenu();
+        subMenu();
+        localChoice = validateInt(localChoice);
         if (localChoice == 1)
         {
           cout << "\nEnter the new name for Team One: ";
@@ -97,7 +97,8 @@ int main()
       // choice c - change team coach names
       if (choice == 'C' || choice == 'c')
       {
-        localChoice = subMenu();
+        subMenu();
+        localChoice = validateInt(localChoice);
         if (localChoice == 1)
         {
           cout << "\nEnter the new coach name for Team One: ";
@@ -117,7 +118,8 @@ int main()
       // choice d - change home city names
       if (choice == 'D' || choice == 'd')
       {
-        localChoice = subMenu();
+        subMenu();
+        localChoice = validateInt(localChoice);
         if (localChoice == 1)
         {
           cout << "\nEnter the home city for Team One: ";
@@ -137,7 +139,8 @@ int main()
       // choice e - change scores
       if (choice == 'E' || choice == 'e')
       {
-        localChoice = subMenu();
+        subMenu();
+        localChoice = validateInt(localChoice);
         if (localChoice == 1)
         {
           cout << "\nTeam One Score: ";
@@ -155,7 +158,8 @@ int main()
       // choice f - change timeout counts
       if (choice == 'F' || choice == 'f')
       {
-        localChoice = subMenu();
+        subMenu();
+        localChoice = validateInt(localChoice);
         if (localChoice == 1)
         {
           cout << "\nTeam One Timeout Count: ";
@@ -174,7 +178,7 @@ int main()
       if (choice == 'G' || choice == 'g')
       {
         cout << "\nQuarter: ";
-        cin >> localEtc;
+        localEtc = validateInt(localEtc);
         s.setQuarter(localEtc);
       }
 
@@ -182,7 +186,7 @@ int main()
       if (choice == 'H' || choice == 'h')
       {
         cout << "\nDown: ";
-        cin >> localDown;
+        localDown = validateInt(localDown);
         s.setDown(localDown);
         
         cout << "\nTo Go: ";
@@ -194,10 +198,10 @@ int main()
       if (choice == 'I' || choice == 'i')
       {
         cout << "\nMinutes: ";
-        cin >> localMinutes;
+        localMinutes = validateInt(localMinutes);
         s.setMinute(localMinutes);
         cout << "\nSeconds: ";
-        cin >> localSeconds;
+        localSeconds = validateInt(localSeconds);
         s.setSeconds(localSeconds);
       }
 
