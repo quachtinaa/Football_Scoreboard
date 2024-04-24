@@ -62,7 +62,7 @@ class Scoreboard
         cout << "      HOME                           VISITOR        " << endl;
         cout << setw(8 + home.getHomeCity().length()/2) << home.getHomeCity() << setw((33 - home.getHomeCity().length()/2) + visitors.getHomeCity().length()/2) << visitors.getHomeCity() << endl;
         cout << setw(8 + home.getName().length()/2) << home.getName() << setw((33 - home.getName().length()/2) + visitors.getName().length()/2) << visitors.getName() << endl;
-        cout << "\t\t\t\t\t   " << minute << ":" << seconds << endl;
+        cout << "\t\t\t\t\t  " << minute << ":" << seconds << endl;
         cout << "\t\t" << home.getScore() << "\t\t     QTR: " << quarter << "\t\t\t    " << visitors.getScore() << endl;
         cout << "\t\t"<< down << " DOWN" << "\t\t\t\t\t" << "  TO GO " << toGo << endl;
         cout << "\nTIMEOUTS LEFT: " << home.getTimeoutCount() << "\t\t\t\t " << "TIMEOUTS LEFT: " << visitors.getTimeoutCount() << endl;
@@ -75,7 +75,6 @@ class Scoreboard
 
 void subMenu()
 {
-  int subChoice;
   
   cout << "\nPick a Team to Update" << endl;
   cout << "---------------------------" << endl;
