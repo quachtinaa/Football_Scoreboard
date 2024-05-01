@@ -3,6 +3,7 @@
 // Instructor: Dr. T
 // Date: 04/20/2024
 // Program Description: This program will display a football scoreboard and allow user to change the scoreboard values
+// Skills: Classes and objects, input validation, menu style, loops
 
 #include <iostream>
 #include <string>
